@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="10dp"
+                    android:layout_height="53dp"
+                    android:layout_weight="1"
+                    android:text="@string/new_title"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="24dp" />
+
+                <EditText
+                    android:id="@+id/title"
+                    android:layout_width="178dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:ems="10"
+                    android:hint="@string/new_settitle"
+                    android:textSize="24dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="190dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="类型"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="24dp" />
+
+                    <RadioGroup
+                        android:id="@+id/type"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:checkedButton="@id/word"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/word"
+                            android:layout_width="90dp"
+                            android:layout_height="wrap_content"
+                            android:text="单词" />
+
+                        <RadioButton
+                            android:id="@+id/group"
+                            android:layout_width="90dp"
+                            android:layout_height="wrap_content"
+                            android:text="词组" />
+
+                        <RadioButton
+                            android:id="@+id/sentence"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="句子" />
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="190dp"
+                            android:layout_height="40dp"
+                            android:layout_weight="1"
+                            android:text="重要度"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="24dp" />
+
+                        <RadioGroup
+                            android:id="@+id/imp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:checkedButton="@id/imp1"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/imp1"
+                                android:layout_width="100dp"
+                                android:layout_height="match_parent"
+                                android:text="存下来" />
+
+                            <RadioButton
+                                android:id="@+id/imp2"
+                                android:layout_width="100dp"
+                                android:layout_height="match_parent"
+                                android:text="多看看" />
+
+                            <RadioButton
+                                android:id="@+id/imp3"
+                                android:layout_width="130dp"
+                                android:layout_height="wrap_content"
+                                android:text="要牢记" />
+
+                        </RadioGroup>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/new_content"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="24dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="624dp"
+                android:layout_margin="15dp">
+
+                <EditText
+                    android:id="@+id/content"
+                    android:layout_width="match_parent"
+                    android:layout_height="462dp"
+                    android:background="@null"
+                    android:gravity="top"
+                    android:hint="@string/new_inputcontent"
+                    android:textSize="24dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/finish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="15dp"
+            android:src="@mipmap/duigou"
+            />
+    </FrameLayout>
+</LinearLayout>
