@@ -1,4 +1,5 @@
 package com.example.notebook;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
@@ -11,12 +12,15 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.RadioButton;
+
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import model.Data;
+import presenter.MyAdapter;
 import presenter.MyDatabase;
 
 public class NewNote extends AppCompatActivity{
@@ -35,8 +39,8 @@ public class NewNote extends AppCompatActivity{
 
     Data data;
     int ids;
-    String type;
-    String imp;
+    String type="";
+    String imp="";
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +57,10 @@ public class NewNote extends AppCompatActivity{
             ed_title.setText(data.getTitle());
             ed_content.setText(data.getContent());
 
+
         }
+
+
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,16 +88,12 @@ public class NewNote extends AppCompatActivity{
         ed_imp = (RadioGroup) this.findViewById(R.id.imp);
         imp1 = (RadioButton) this.findViewById(R.id.imp1);
         imp2 = (RadioButton) this.findViewById(R.id.imp2);
-        imp3 = (RadioButton) this.findViewById(R.id.imp3);
-        setImp();
-        setType();
-        ed_type.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
 
-            }
-        });
+        imp3 = (RadioButton) this.findViewById(R.id.imp3);
+
     }
+
+
 
     @Override
     public void onBackPressed() {     //重写返回建方法，如果是属于新建则插入数据表并返回主页面，如果是修改，修改表中数据并返回主页面
@@ -99,12 +102,15 @@ public class NewNote extends AppCompatActivity{
         String time = simpleDateFormat.format(date);
         String title = ed_title.getText().toString();
         String content = ed_content.getText().toString();
+        setImp();
+        setType();
         if(ids!=0){
             data=new Data(title,ids, content, time,type,imp);
             myDatabase.toUpdate(data);
             Intent intent=new Intent(NewNote.this,MainActivity.class);
             startActivity(intent);
             NewNote.this.finish();
+
         }
         //新建日记
         else{
@@ -124,12 +130,16 @@ public class NewNote extends AppCompatActivity{
         Log.d("new_note", "isSave: "+time);
         String title = ed_title.getText().toString();
         String content = ed_content.getText().toString();
+        setImp();
+        setType();
+
         if(ids!=0){
             data=new Data(title,ids, content, time,type,imp);
             myDatabase.toUpdate(data);
             Intent intent=new Intent(NewNote.this,MainActivity.class);
             startActivity(intent);
             NewNote.this.finish();
+
         }
         //新建日记
         else{
@@ -148,29 +158,39 @@ public class NewNote extends AppCompatActivity{
     }
 
     public void setType() {
-        if(word.isChecked()==true)
-            type="word";
-        else if (sentence.isChecked()==true)
-            type="sentence";
-        else if (group.isChecked()==true)
-            type = "group";
-        else{
-            word.setChecked(true);
-            type="word";
+        if(type.equals("")) {
+            if (word.isChecked() == true)
+                type = "word";
+            else if (sentence.isChecked() == true)
+                type = "sentence";
+            else if (group.isChecked() == true)
+                type = "group";
+
         }
+        else if(type.equals("word"))
+            word.setChecked(true);
+        else if(type.equals("group"))
+            group.setChecked(true);
+        else
+            sentence.setChecked(true);
 
     }
     public void setImp() {
-        if(imp1.isChecked()==true)
-            imp="imp1";
-        else if (imp2.isChecked()==true)
-            imp="imp2";
-        else if(imp3.isChecked()==true)
-            imp="imp3";
-        else{
-            imp1.setChecked(true);
-            imp="imp1";
+        if(imp.equals("")) {
+            if (imp1.isChecked() == true)
+                imp = "imp1";
+            else if (imp2.isChecked() == true)
+                imp = "imp2";
+            else if (imp3.isChecked() == true)
+                imp = "imp3";
+
         }
+        else if(imp.equals("imp1"))
+            imp1.setChecked(true);
+        else if(imp.equals("imp2"))
+            imp2.setChecked(true);
+        else
+            imp3.setChecked(true);
 
     }
     @Override

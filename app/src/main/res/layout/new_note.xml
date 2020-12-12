@@ -60,7 +60,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:checkedButton="@id/word"
                         android:orientation="horizontal">
 
                         <RadioButton
@@ -117,7 +116,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:checkedButton="@id/imp1"
                             android:orientation="horizontal">
 
                             <RadioButton
