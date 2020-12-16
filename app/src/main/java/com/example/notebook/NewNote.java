@@ -56,7 +56,8 @@ public class NewNote extends AppCompatActivity{
             data = myDatabase.getTiandCon(ids);
             ed_title.setText(data.getTitle());
             ed_content.setText(data.getContent());
-
+            type=data.getType();
+            imp=data.getImp();
 
         }
 
@@ -90,6 +91,10 @@ public class NewNote extends AppCompatActivity{
         imp2 = (RadioButton) this.findViewById(R.id.imp2);
 
         imp3 = (RadioButton) this.findViewById(R.id.imp3);
+
+
+        setType();
+        setImp();
 
     }
 
@@ -158,12 +163,14 @@ public class NewNote extends AppCompatActivity{
     }
 
     public void setType() {
+
         if(type.equals("")) {
-            if (word.isChecked() == true)
+
+            if (group.isChecked())
                 type = "word";
-            else if (sentence.isChecked() == true)
+            else if (sentence.isChecked())
                 type = "sentence";
-            else if (group.isChecked() == true)
+            else
                 type = "group";
 
         }
@@ -176,12 +183,13 @@ public class NewNote extends AppCompatActivity{
 
     }
     public void setImp() {
+
         if(imp.equals("")) {
-            if (imp1.isChecked() == true)
+            if (imp1.isChecked())
                 imp = "imp1";
-            else if (imp2.isChecked() == true)
+            else if (imp2.isChecked())
                 imp = "imp2";
-            else if (imp3.isChecked() == true)
+            else if (imp3.isChecked())
                 imp = "imp3";
 
         }
@@ -191,6 +199,8 @@ public class NewNote extends AppCompatActivity{
             imp2.setChecked(true);
         else
             imp3.setChecked(true);
+
+
 
     }
     @Override
